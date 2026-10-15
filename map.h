@@ -1,8 +1,10 @@
 #ifndef MAP_H
 #define MAP_H
 #include "config.h"
-#define MAP_COLS 190
-#define MAP_ROWS 100
+#include "stdbool.h"
+#define MAP_COLS 95
+#define MAP_ROWS 50
+
 //j'ai besoin d'une struct coords
 //J'ai besoin d'un enum Tile_type et d'un array color, l'array est déclaré dans le main
 
@@ -13,10 +15,8 @@ typedef enum{
 } Tile_type;
 
 typedef struct{
-    int coord_x;
-    int coord_y;
     int tile_type;
 } Coords;
 bool is_inside(int x, int y);
-void init_coords(Coords coords[SCREEN_WIDTH/TILE_WIDTH][SCREEN_HEIGHT/TILE_WIDTH]);
+void init_coords(Coords coords[MAP_COLS][MAP_ROWS]);
 #endif

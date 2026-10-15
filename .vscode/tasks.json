@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compiler",
+      "type": "shell",
+      "command": "gcc *.c -o ${workspaceFolderBasename}.exe -Wall -Wextra -g -lraylib -lopengl32 -lgdi32 -lwinmm",
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Compiler et lancer",
+      "type": "shell",
+      "command": "./${workspaceFolderBasename}.exe",
+      "dependsOn": "Compiler",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    }
+  ]
+}

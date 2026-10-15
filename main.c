@@ -1,22 +1,18 @@
 #include "raylib.h"
 #include <stdio.h>
 #include "config.h"
-#include "tiles.h"
-//x = columns && y = rows
+#include "editor.h"
+#include "map.h"
 int main(void){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Map-editor-&-pathfinding");
     SetTargetFPS(60);
     Color tiles_color[TYPES_NB] = {FLOOR_GREEN, WALL_GREEN};
+    Coords coords[SCREEN_WIDTH/TILE_WIDTH][SCREEN_HEIGHT/TILE_WIDTH];
+    init_coords(coords);
     while (!WindowShouldClose())
     {
-        BeginDrawing();
-        ClearBackground(BLACK);
-        for(int x = 0; x < SCREEN_WIDTH / TILE_WIDTH; x++){
-            for(int y = 0; y < SCREEN_HEIGHT / TILE_WIDTH; y++){
-                DrawRectangleLines(x * TILE_WIDTH, y*TILE_WIDTH, TILE_WIDTH, TILE_WIDTH, WHITE);
-            }
-        }
-        EndDrawing();
+        draw_grid(coords, tiles_color);
+        detect_clic(coords);
     }
     CloseWindow();
     return 0;

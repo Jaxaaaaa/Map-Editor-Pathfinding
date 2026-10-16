@@ -40,4 +40,7 @@ void handle_save_load(Tile tiles[MAP_COLS][MAP_ROWS]){
     if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S)){
         save_map("map_1.txt", tiles);
     }
+    if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_L)){
+        load_map("map_1.txt", tiles);
+    }
 }

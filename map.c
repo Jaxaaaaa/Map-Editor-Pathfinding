@@ -48,8 +48,8 @@ void load_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]){
     for(int y = 0; y < MAP_ROWS; y++){
         for(int x = 0; x < MAP_COLS; x++){
             int value;
-            fscanf(file, &value);
-            tile[MAP_COLS][MAP_ROWS].tile_type = value;
+            fscanf(file, "%d", &value);
+            tile[x][y].tile_type = value;
         }
     }
     fclose(file);

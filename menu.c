@@ -13,10 +13,12 @@ State update_menu(){
     }
 }
 void draw_menu(){
-    BeginDrawing();
     DrawRectangleGradientV(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, MENU_TOP_GREEN, MENU_BOTTOM_GREEN);
-    DrawText(TextFormat("Editeur de carte (espace)"), 0, SCREEN_HEIGHT/2-10, 20, MENU_TEXT_COLOR);
-    DrawText(TextFormat("Pathfinding (entree)"), 0, SCREEN_HEIGHT/2+200, 20, MENU_TEXT_COLOR);
-    EndDrawing();
+    int editor_txt_lgt = MeasureText("Editeur de carte (espace)", 20); 
+    int pathfinding_txt_lgt = MeasureText("Pathfinding (entree)", 20);
+    int title_txt_lgt = MeasureText("Map editor & Pathfinding", 40);
+    DrawText("Map editor & Pathfinding", (SCREEN_WIDTH/2) - (title_txt_lgt/2), SCREEN_HEIGHT/2+-100, 50, MENU_TITLE_COLOR);
+    DrawText("Editeur de carte (espace)", (SCREEN_WIDTH/2) - (editor_txt_lgt/2), SCREEN_HEIGHT/2-10, 30, MENU_TEXT_COLOR);
+    DrawText("Pathfinding (entree)", (SCREEN_WIDTH/2) - (pathfinding_txt_lgt/2), SCREEN_HEIGHT/2+30, 30, MENU_TEXT_COLOR);
 }
 

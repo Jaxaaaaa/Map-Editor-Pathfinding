@@ -11,7 +11,6 @@ State update_editor(){
 }
 
 void draw_grid(Tile tiles[MAP_COLS][MAP_ROWS], Color tiles_color[TYPES_NB]){
-    BeginDrawing();
     ClearBackground(LIGHTGRAY);
     for(int x = 0; x < SCREEN_WIDTH / TILE_SIZE; x++){
         for(int y = 0; y < SCREEN_HEIGHT / TILE_SIZE; y++){
@@ -23,7 +22,6 @@ void draw_grid(Tile tiles[MAP_COLS][MAP_ROWS], Color tiles_color[TYPES_NB]){
             }
         }
     }
-    EndDrawing();
 }
 
 void place_tile(int type, Tile tiles[MAP_COLS][MAP_ROWS]){

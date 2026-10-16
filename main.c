@@ -16,6 +16,7 @@ int main(void){
     init_coords(tiles);
     while (!WindowShouldClose())
     {
+        BeginDrawing();
         switch(state){
             case MENU:
                 draw_menu();
@@ -25,12 +26,12 @@ int main(void){
                 draw_grid(tiles, tiles_color);
                 detect_clic(tiles);
                 handle_save_load(tiles);
-                state = update_editor();
+                state = update_editor(); 
                 break;
             case PATHFINDING:
-                printf("a");
                 break;
         }
+        EndDrawing();
     }
     CloseWindow();
     return 0;

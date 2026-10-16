@@ -39,7 +39,12 @@ void load_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]){
     }
     int cols;
     int rows;
-    if(fscanf(file, "%d %d", cols, rows) )
+    fscanf(file, "%d %d", cols, rows);
+    if(cols != MAP_COLS || rows != MAP_ROWS){
+        printf("Header error\n");
+        fclose(file);
+        return;
+    }
     for(int y = 0; y < MAP_ROWS; y++){
         for(int x = 0; x < MAP_COLS; x++){
             int value;
@@ -47,6 +52,6 @@ void load_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]){
             tile[MAP_COLS][MAP_ROWS].tile_type = value;
         }
     }
-
-
+    fclose(file);
+    printf("Charge avec succes\n");
 }

@@ -5,7 +5,7 @@
 #define MAP_COLS 95
 #define MAP_ROWS 50
 
-//j'ai besoin d'une struct coords
+//j'ai besoin d'une struct tiles
 //J'ai besoin d'un enum Tile_type et d'un array color, l'array est déclaré dans le main
 
 typedef enum{
@@ -16,7 +16,9 @@ typedef enum{
 
 typedef struct{
     int tile_type;
-} Coords;
+} Tile;
 bool is_inside(int x, int y);
-void init_coords(Coords coords[MAP_COLS][MAP_ROWS]);
+void init_coords(Tile tiles[MAP_COLS][MAP_ROWS]);
+void save_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]);
+void load_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]);
 #endif

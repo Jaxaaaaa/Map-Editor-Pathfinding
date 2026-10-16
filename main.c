@@ -7,12 +7,13 @@ int main(void){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Map-editor-&-pathfinding");
     SetTargetFPS(60);
     Color tiles_color[TYPES_NB] = {FLOOR_GREEN, WALL_GREEN};
-    Coords coords[MAP_COLS][MAP_ROWS];
-    init_coords(coords);
+    Tile tiles[MAP_COLS][MAP_ROWS];
+    init_coords(tiles);
     while (!WindowShouldClose())
     {
-        draw_grid(coords, tiles_color);
-        detect_clic(coords);
+        draw_grid(tiles, tiles_color);
+        detect_clic(tiles);
+        handle_save_load(tiles);
     }
     CloseWindow();
     return 0;

@@ -1,7 +1,14 @@
 #include "editor.h"
 #include "raylib.h"
-
-
+#include "state.h"
+State update_editor(){
+    if(IsKeyPressed(KEY_ESCAPE)){
+        return MENU; 
+    }
+    else{
+        return EDITOR;
+    }
+}
 
 void draw_grid(Tile tiles[MAP_COLS][MAP_ROWS], Color tiles_color[TYPES_NB]){
     BeginDrawing();

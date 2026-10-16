@@ -5,4 +5,7 @@
 #define TILE_SIZE 20
 #define FLOOR_GREEN (Color){ 106, 156, 89, 255}
 #define WALL_GREEN (Color){ 30, 46, 36, 255}
+#define MENU_TOP_GREEN (Color){ 12, 28, 20, 255}
+#define MENU_BOTTOM_GREEN (Color){38, 74, 48, 255}
+#define MENU_TEXT_COLOR (Color){ 232, 196, 104, 255 }
 #endif

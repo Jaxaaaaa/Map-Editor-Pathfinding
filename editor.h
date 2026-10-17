@@ -5,6 +5,7 @@
 #include "config.h"
 #include "stdio.h"
 #include "state.h"
+#include "drawmap.h"
 //x = columns && y = rows
 //Construire la grille
 //Placer les tiles sur la grille en cliquant, clic gauche pour le sol et clic droit pour les murs

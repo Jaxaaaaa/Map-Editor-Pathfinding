@@ -5,7 +5,7 @@
 #include "map.h"
 #include "state.h"
 #include "menu.h"
-
+#include "pathfinding.h"
 int main(void){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Map-editor-&-pathfinding");
     SetExitKey(KEY_NULL);
@@ -13,6 +13,7 @@ int main(void){
     State state = MENU;
     Color tiles_color[TYPES_NB] = {FLOOR_GREEN, WALL_GREEN};
     Tile tiles[MAP_COLS][MAP_ROWS];
+    PathfindingScreen pathfinding_screen = { 0 };
     init_coords(tiles);
     while (!WindowShouldClose())
     {
@@ -29,7 +30,10 @@ int main(void){
                 state = update_editor(); 
                 break;
             case PATHFINDING:
-                break;
+                draw_grid(tiles, tiles_color);
+                handle_save_load(tiles);
+                handle_pf_clicks(&pathfinding_screen, tiles);
+                draw_pf_components(pathfinding_screen);
         }
         EndDrawing();
     }

@@ -25,10 +25,9 @@ void draw_grid(Tile tiles[MAP_COLS][MAP_ROWS], Color tiles_color[TYPES_NB]){
 }
 
 void place_tile(int type, Tile tiles[MAP_COLS][MAP_ROWS]){
-    int col = GetMouseX() / TILE_SIZE;
-    int row = GetMouseY() / TILE_SIZE;
-    if(is_inside(col, row)){
-        tiles[col][row].tile_type = type;
+    Coords cell;
+    if(get_mouse_cell(&cell)){
+        tiles[cell.x][cell.y].tile_type = type;
     }
 }
 

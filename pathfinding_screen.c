@@ -1,6 +1,16 @@
 #include "pathfinding_screen.h"
 #include "raylib.h"
 #include "drawmap.h"
+#include "pathfinding.h"
+
+State update_pf_screen(){
+    if(IsKeyPressed(KEY_ESCAPE)){
+        return MENU; 
+    }
+    else{
+        return PATHFINDING;
+    }
+}
 
 void handle_pf_clicks(PathfindingScreen *pathfinding_screen, Tile tiles[MAP_COLS][MAP_ROWS]){
     Coords cell;
@@ -32,5 +42,24 @@ void draw_pf_components(const PathfindingScreen *pathfinding_screen){
     }
     if(pathfinding_screen->target_placed){
         DrawRectangle(pathfinding_screen->target.x * TILE_SIZE, pathfinding_screen->target.y * TILE_SIZE, TILE_SIZE, TILE_SIZE, RED);
+    }
+}
+
+void start_bfs(PathfindingScreen *pathfinding_screen, Tile tiles[MAP_COLS][MAP_ROWS]){
+    if(!pathfinding_screen->start_placed || !pathfinding_screen->target_placed){
+        pathfinding_screen->pathfound = false;
+    }
+    if(IsKeyPressed(KEY_SPACE) && pathfinding_screen->start_placed && pathfinding_screen->target_placed){
+        pathfinding_screen->pathfound = bfs(tiles, pathfinding_screen->start, pathfinding_screen->target, pathfinding_screen->visited, pathfinding_screen->came_from);
+    }
+}
+
+void draw_visited_tiles(const PathfindingScreen *pathfinding_screen){
+    for (int x = 0; x < MAP_COLS; x++){
+        for(int y = 0; y < MAP_ROWS; y++){
+            if(pathfinding_screen->visited[x][y] == true){
+                DrawRectangle(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, Fade(BLUE, 0.4f));
+            }
+        }
     }
 }

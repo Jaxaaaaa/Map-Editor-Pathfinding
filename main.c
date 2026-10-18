@@ -5,7 +5,7 @@
 #include "map.h"
 #include "state.h"
 #include "menu.h"
-#include "pathfinding.h"
+#include "pathfinding_screen.h"
 int main(void){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Map-editor-&-pathfinding");
     SetExitKey(KEY_NULL);
@@ -31,9 +31,12 @@ int main(void){
                 break;
             case PATHFINDING:
                 draw_grid(tiles, tiles_color);
+                draw_visited_tiles(&pathfinding_screen);
                 handle_save_load(tiles);
                 handle_pf_clicks(&pathfinding_screen, tiles);
-                draw_pf_components(pathfinding_screen);
+                draw_pf_components(&pathfinding_screen);
+                start_bfs(&pathfinding_screen, tiles);
+                state = update_pf_screen();
         }
         EndDrawing();
     }

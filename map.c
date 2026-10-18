@@ -55,3 +55,7 @@ void load_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]){
     fclose(file);
     printf("Charge avec succes\n");
 }
+
+bool is_walkable(Tile tiles[MAP_COLS][MAP_ROWS], int x, int y){
+    return is_inside(x, y) && tiles[x][y].tile_type != WALL;
+}

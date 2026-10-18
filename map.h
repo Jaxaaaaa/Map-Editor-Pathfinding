@@ -26,4 +26,5 @@ bool is_inside(int x, int y);
 void init_coords(Tile tiles[MAP_COLS][MAP_ROWS]);
 void save_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]);
 void load_map(const char *filename, Tile tile[MAP_COLS][MAP_ROWS]);
+bool is_walkable(Tile tiles[MAP_COLS][MAP_ROWS], int x, int y);
 #endif

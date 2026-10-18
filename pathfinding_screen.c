@@ -26,7 +26,7 @@ void handle_pf_clicks(PathfindingScreen *pathfinding_screen, Tile tiles[MAP_COLS
     }
 }
 
-void draw_pf_components(PathfindingScreen pathfinding_screen){
+void draw_pf_components(const PathfindingScreen *pathfinding_screen){
     if(pathfinding_screen->start_placed){
         DrawRectangle(pathfinding_screen->start.x * TILE_SIZE, pathfinding_screen->start.y * TILE_SIZE, TILE_SIZE, TILE_SIZE, GREEN);
     }

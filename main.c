@@ -32,6 +32,7 @@ int main(void){
             case PATHFINDING:
                 draw_grid(tiles, tiles_color);
                 draw_visited_tiles(&pathfinding_screen);
+                draw_path(&pathfinding_screen);
                 handle_save_load(tiles);
                 handle_pf_clicks(&pathfinding_screen, tiles);
                 draw_pf_components(&pathfinding_screen);

@@ -46,11 +46,18 @@ void draw_pf_components(const PathfindingScreen *pathfinding_screen){
 }
 
 void start_bfs(PathfindingScreen *pathfinding_screen, Tile tiles[MAP_COLS][MAP_ROWS]){
-    if(!pathfinding_screen->start_placed || !pathfinding_screen->target_placed){
+    if(!pathfinding_screen->start_placed || !pathfinding_screen->target_placed){ //si la case départ ou la case target ne sont pas placée, pathfound est false
         pathfinding_screen->pathfound = false;
+        pathfinding_screen->tiles_in_path = 0;
     }
     if(IsKeyPressed(KEY_SPACE) && pathfinding_screen->start_placed && pathfinding_screen->target_placed){
         pathfinding_screen->pathfound = bfs(tiles, pathfinding_screen->start, pathfinding_screen->target, pathfinding_screen->visited, pathfinding_screen->came_from);
+        if(pathfinding_screen->pathfound){
+            pathfinding_screen->tiles_in_path = construct_path(pathfinding_screen->start, pathfinding_screen->target, pathfinding_screen->came_from, pathfinding_screen->reversed_path);
+        }
+        else{
+            pathfinding_screen->tiles_in_path = 0; //si bfs echoue, remise à 0 de tiles_in_path
+        }
     }
 }
 
@@ -61,5 +68,11 @@ void draw_visited_tiles(const PathfindingScreen *pathfinding_screen){
                 DrawRectangle(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, Fade(BLUE, 0.4f));
             }
         }
+    }
+}
+
+void draw_path(const PathfindingScreen *pathfinding_screen){
+    for (int i = 0; i < pathfinding_screen->tiles_in_path; i++){
+        DrawRectangle(pathfinding_screen->reversed_path[i].x*TILE_SIZE, pathfinding_screen->reversed_path[i].y*TILE_SIZE, TILE_SIZE, TILE_SIZE, ORANGE);
     }
 }

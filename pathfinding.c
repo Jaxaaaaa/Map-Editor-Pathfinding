@@ -3,7 +3,6 @@
 const int dir_x[4] = {0, 0 , -1, 1};
 const int dir_y[4] = {-1, 1, 0, 0};
 
-
 bool bfs(Tile tiles[MAP_COLS][MAP_ROWS], Coords start, Coords target, bool visited[MAP_COLS][MAP_ROWS], Coords came_from[MAP_COLS][MAP_ROWS]){
     for(int x = 0; x <MAP_COLS; x++){ //remise de toutes les cases visited à false
         for(int y = 0; y < MAP_ROWS; y++){
@@ -29,7 +28,7 @@ bool bfs(Tile tiles[MAP_COLS][MAP_ROWS], Coords start, Coords target, bool visit
                 queue[write_index].x = neighbor_x; //on l'ajoute à la queue
                 queue[write_index].y = neighbor_y;
                 visited[neighbor_x][neighbor_y] = true; //on ajoute la voisine à visited pour eviter de la revisiter lors d'une boucle sur les voisines
-                came_from[neighbor_x][neighbor_y] = current; //on ajoute les coordonnées (la fleche) de la case actuelles à la position de la voisine, pour qu'on puisse savoir d'ou l'on vient 
+                came_from[neighbor_x][neighbor_y] = current; //on range les coordonnées de la case actuelle dans la case du voisin
                 if(target.x == neighbor_x && target.y == neighbor_y){ //si la voisine est la target, on return true et on sort de bfs
                     return true;
                 }
@@ -38,4 +37,17 @@ bool bfs(Tile tiles[MAP_COLS][MAP_ROWS], Coords start, Coords target, bool visit
         }
     }
     return false;
+}
+
+//construct_path remplit le tableau reversed_path en remontant les cases contenue dans came_from, donc depuis la cible vers le départ puis renvoie le nombre de case dans le chemin
+int construct_path(Coords start, Coords target, Coords came_from[MAP_COLS][MAP_ROWS], Coords reversed_path[MAP_COLS*MAP_ROWS]){
+    int tiles_in_path = 0;
+    Coords current = target; //la tile actuelle dans la reconstruction du chemin
+    while(current.x != start.x || current.y != start.y){ //tant que la tile actuelle n'est pas le point de départ
+        reversed_path[tiles_in_path].x = current.x; //on ajoute les coordonnées de current à reverse path
+        reversed_path[tiles_in_path].y = current.y; 
+        current = came_from[current.x][current.y]; //on fait avancer current à la case suivante en lisant les coordonées (du point précédent) dans la case actuelle
+        tiles_in_path++; 
+    }
+    return tiles_in_path;
 }

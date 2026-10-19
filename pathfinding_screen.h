@@ -13,6 +13,8 @@ typedef struct{
     bool visited[MAP_COLS][MAP_ROWS]; //stock les cases visitées par l'algo BFS
     Coords came_from[MAP_COLS][MAP_ROWS]; //stock les cases d'ou l'on est venu pour trouver la targer via BFS
     bool pathfound;
+    Coords reversed_path[MAP_COLS*MAP_ROWS]; //stock les cases du chemin tirées de came_from
+    int tiles_in_path; 
 } PathfindingScreen;
 
 State update_pf_screen();
@@ -20,5 +22,6 @@ void handle_pf_clicks(PathfindingScreen *pathfinding_screen, Tile tiles[MAP_COLS
 void draw_pf_components(const PathfindingScreen *pathfinding_screen);
 void start_bfs(PathfindingScreen *pathfinding_screen, Tile tiles[MAP_COLS][MAP_ROWS]);
 void draw_visited_tiles(const PathfindingScreen *pathfiding_screen);
+void draw_path(const PathfindingScreen *pathfinding_creen);
 
 #endif

@@ -4,6 +4,7 @@
 #include "drawmap.h"
 #include "stdio.h"
 #include "state.h"
+#include "character.h"
 //il me faut une fonction pour placer le start et la target
 typedef struct{
     Coords start;
@@ -15,6 +16,7 @@ typedef struct{
     bool pathfound;
     Coords reversed_path[MAP_COLS*MAP_ROWS]; //stock les cases du chemin tirées de came_from
     int tiles_in_path; 
+    Zombie zombie;
 } PathfindingScreen;
 
 State update_pf_screen();

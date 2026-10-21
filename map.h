@@ -5,22 +5,25 @@
 #define MAP_COLS 95
 #define MAP_ROWS 50
 
-//j'ai besoin d'une struct tiles
-//J'ai besoin d'un enum Tile_type et d'un array color, l'array est déclaré dans le main
+// j'ai besoin d'une struct tiles
+// J'ai besoin d'un enum Tile_type et d'un array color, l'array est déclaré dans le main
 
-typedef enum{
+typedef enum
+{
     FLOOR,
     WALL,
     TYPES_NB,
 } Tile_type;
 
-typedef struct{
+typedef struct
+{
     int tile_type;
 } Tile;
 
-typedef struct{
+typedef struct
+{
     int x;
-    int y; 
+    int y;
 } Coords;
 bool is_inside(int x, int y);
 void init_coords(Tile tiles[MAP_COLS][MAP_ROWS]);

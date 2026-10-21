@@ -5,17 +5,18 @@
 #include "stdio.h"
 #include "state.h"
 #include "character.h"
-//il me faut une fonction pour placer le start et la target
-typedef struct{
+// il me faut une fonction pour placer le start et la target
+typedef struct
+{
     Coords start;
     Coords target;
     bool start_placed;
     bool target_placed;
-    bool visited[MAP_COLS][MAP_ROWS]; //stock les cases visitées par l'algo BFS
-    Coords came_from[MAP_COLS][MAP_ROWS]; //stock les cases d'ou l'on est venu pour trouver la targer via BFS
+    bool visited[MAP_COLS][MAP_ROWS];     // stock les cases visitées par l'algo BFS
+    Coords came_from[MAP_COLS][MAP_ROWS]; // stock les cases d'ou l'on est venu pour trouver la targer via BFS
     bool pathfound;
-    Coords reversed_path[MAP_COLS*MAP_ROWS]; //stock les cases du chemin tirées de came_from
-    int tiles_in_path; 
+    Coords reversed_path[MAP_COLS * MAP_ROWS]; // stock les cases du chemin tirées de came_from
+    int tiles_in_path;
     Zombie zombie;
 } PathfindingScreen;
 

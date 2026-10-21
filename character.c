@@ -53,4 +53,4 @@ void move_character(Zombie *zombie, const Coords path[MAP_COLS * MAP_ROWS])
             zombie->move_timer = CHARACTER_MOVE_DELAY;
         }
     }
-} 
+}

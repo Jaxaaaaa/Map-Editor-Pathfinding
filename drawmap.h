@@ -4,4 +4,4 @@
 
 bool get_mouse_cell(Coords *cells);
 
- #endif
+#endif

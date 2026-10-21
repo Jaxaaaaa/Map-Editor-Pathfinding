@@ -1,10 +1,11 @@
 #ifndef STATE_H
 #define STATE_H
 
-typedef enum{
+typedef enum
+{
     MENU,
     EDITOR,
     PATHFINDING,
-} State; 
+} State;
 
 #endif

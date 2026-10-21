@@ -12,8 +12,8 @@ void draw_character(Texture2D texture, Coords coords)
     float cell_y = coords.y * TILE_SIZE;
 
     Rectangle dest = {// on créer la destination du rectangle
-                      cell_x + TILE_SIZE / 2 - display_w / 2,
-                      cell_y + TILE_SIZE / 2 - display_h,
+                      cell_x + TILE_SIZE / 2 - display_w / 2 + CHARACTER_ZOMBIE_MARGE_X * scale,
+                      cell_y + TILE_SIZE / 2 - display_h + CHARACTER_ZOMBIE_MARGE_Y * scale,
                       display_w,
                       display_h};
     DrawTexturePro(texture, zombie_source, dest, (Vector2){0, 0}, 0.0f, WHITE);
@@ -53,4 +53,4 @@ void move_character(Zombie *zombie, const Coords path[MAP_COLS * MAP_ROWS])
             zombie->move_timer = CHARACTER_MOVE_DELAY;
         }
     }
-}
+} 

@@ -1,7 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include "raylib.h"
-#include "map.h"ca
+#include "map.h"
 typedef struct {
     Coords position;
     int path_index;

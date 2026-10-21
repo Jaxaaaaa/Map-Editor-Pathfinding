@@ -19,7 +19,7 @@ bool bfs(Tile tiles[MAP_COLS][MAP_ROWS], Coords start, Coords target, bool visit
     write_index++;
     visited[start.x][start.y] = true;
     while(read_index != write_index){ //tant que la queue n'est pas vide
-        Coords current = queue[read_index]; //la tile actuelle est celle à la première position de lecture de la queue
+        Coords current = queue[read_index]; //la tile actuelle es t celle à la première position de lecture de la queue
         read_index++; //on retire la tile de la queue
         for(int i = 0; i < 4; i++){ //on test les 4 voisines de la case actuelle
             int neighbor_x = current.x + dir_x[i]; //le x de la voisine testée de la case actuelle
